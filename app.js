@@ -22,9 +22,14 @@ app.post('/', (req, res) => {
 });
 
 app.get('/commands', (req, res) => {
-    if (process.platform !== 'linux') {
+    if (process.platform === 'linux') {
         const commands = require('./data/commands/linux');
         res.json(commands);
+    } else if (process.platform === 'win32') {
+        const commands = require('./data/commands/windows');
+        res.json(commands);
+    } else {
+        res.send('Sorry, we don\'t have commands for you.')
     }
 });
 
