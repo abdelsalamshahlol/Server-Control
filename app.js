@@ -3,17 +3,17 @@ const system = require('system-commands');
 
 const app = new express();
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 app.post('/', (req, res) => {
     const {command} = req.body;
-
     system(command)
         .then(output => {
-            // Log the output
-            console.log(output)
+            res.send(output);
         })
         .catch(error => {
-            // An error occurred! Log the error
-            console.error(error)
+            res.status(501).send(error);
         });
 });
 
