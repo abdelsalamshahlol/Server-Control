@@ -21,4 +21,11 @@ app.post('/', (req, res) => {
         });
 });
 
+app.get('/commands', (req, res) => {
+    if (process.platform !== 'linux') {
+        const commands = require('./data/commands/linux');
+        res.json(commands);
+    }
+});
+
 app.listen(process.env.PORT || '4500');
