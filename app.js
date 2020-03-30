@@ -1,13 +1,13 @@
 const express = require('express');
 const system = require('system-commands');
-
+require('dotenv').config();
 const app = new express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
-    res.send(`Sever control | Your server is running ${process.platform}`);
+    res.send(`Server control | Your server is running ${process.platform}`);
 });
 
 app.post('/', (req, res) => {
@@ -21,4 +21,4 @@ app.post('/', (req, res) => {
         });
 });
 
-app.listen('3000');
+app.listen(process.env.PORT || '4500');
