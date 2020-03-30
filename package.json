@@ -1,0 +1,12 @@
+{
+  "name": "server-control",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "system-commands": "^1.1.7"
+  }
+}
